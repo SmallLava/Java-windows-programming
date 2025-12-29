@@ -2,51 +2,75 @@ package com.project.rhythmdash;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Slider;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 public class MenuScreen implements Screen {
-
-    final MainGame game; // 拿到經理的參考，這樣我們才能切換畫面
+    private final Stage stage; // UI 的舞台
 
     public MenuScreen(final MainGame game) {
-        this.game = game;
-    }
 
-    @Override
-    public void show() {
-        // 畫面剛顯示時執行 (類似初始化)
+        stage = new Stage(new ScreenViewport());
+        Gdx.input.setInputProcessor(stage);
+
+        Table table = new Table();
+        table.setFillParent(true);
+        stage.addActor(table);
+
+        Label titleLabel = new Label("RHYTHM DASH", game.skin, "title");
+
+        TextButton startButton = new TextButton("START GAME", game.skin);
+        startButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                GameScreen gameScreen = new GameScreen(game);
+                game.setScreen(gameScreen);
+                gameScreen.activateInputProcessor();
+            }
+        });
+
+        final Slider volumeSlider = new Slider(0, 1, 0.1f, false, game.skin);
+        volumeSlider.setValue(game.globalVolume);
+        Label volumeLabel = new Label("Volume: " + (int)(game.globalVolume * 100) + "%", game.skin);
+
+        volumeSlider.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                game.globalVolume = volumeSlider.getValue();
+                volumeLabel.setText("Volume: " + (int)(game.globalVolume * 100) + "%");
+            }
+        });
+
+        table.add(titleLabel).padBottom(50).row();
+        table.add(startButton).width(200).height(60).padBottom(20).row();
+        table.add(new Label("Settings", game.skin)).padBottom(10).row();
+        table.add(volumeLabel).padBottom(5).row();
+        table.add(volumeSlider).width(300).row();
     }
 
     @Override
     public void render(float delta) {
-        // 1. 清除螢幕 (用深藍色填滿背景，模擬 Muse Dash 的夜景氛圍)
-        ScreenUtils.clear(0, 0, 0.2f, 1);
-
-        // 2. 開始繪圖
-        game.batch.begin();
-        // 這裡以後會畫 LOGO 和 "Press Start"
-        // 目前我們先留空，或者你可以試著畫一行字
-        game.batch.end();
-
-        // 3. 簡單的點擊測試：如果點擊螢幕，就印出一行字
-        if (Gdx.input.isTouched()) {
-            System.out.println("Go to Song Select!");
-            // game.setScreen(new SongSelectScreen(game)); // 未來會寫這行
-        }
+        ScreenUtils.clear(0.1f, 0.1f, 0.2f, 1);
+        
+        stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
+        stage.draw();
     }
 
     @Override
-    public void resize(int width, int height) { }
-
-    @Override
-    public void pause() { }
-
-    @Override
-    public void resume() { }
-
-    @Override
-    public void hide() { }
-
-    @Override
-    public void dispose() { }
+    public void dispose() {
+        stage.dispose();
+    }
+    
+    @Override public void show() {}
+    @Override public void resize(int width, int height) { stage.getViewport().update(width, height, true); }
+    @Override public void pause() {}
+    @Override public void resume() {}
+    @Override public void hide() {}
 }
