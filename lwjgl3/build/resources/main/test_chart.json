@@ -1,0 +1,60 @@
+{
+  "songName": "override.mp3",
+  "bpm": 164,
+  "offset": 0,
+  "notes": [
+    { "time": 2.00, "lane": 0, "type": 0 },
+    { "time": 2.36, "lane": 1, "type": 0 },
+    { "time": 2.73, "lane": 0, "type": 0 },
+    { "time": 3.10, "lane": 1, "type": 0 },
+    
+    { "time": 3.46, "lane": 0, "type": 0 },
+    { "time": 3.82, "lane": 1, "type": 0 },
+    { "time": 4.19, "lane": 0, "type": 0 },
+    { "time": 4.56, "lane": 1, "type": 0 },
+
+    { "time": 4.92, "lane": 0, "type": 0 },
+    { "time": 5.29, "lane": 0, "type": 0 },
+    { "time": 5.65, "lane": 1, "type": 0 },
+    { "time": 6.02, "lane": 1, "type": 0 },
+
+    { "time": 6.39, "lane": 0, "type": 0 },
+    { "time": 6.75, "lane": 1, "type": 0 },
+    { "time": 7.12, "lane": 0, "type": 0 },
+    { "time": 7.48, "lane": 1, "type": 0 },
+
+    { "time": 8.00, "lane": 0, "type": 0 },
+    { "time": 8.36, "lane": 0, "type": 0 },
+    { "time": 8.73, "lane": 1, "type": 0 },
+    { "time": 9.10, "lane": 1, "type": 0 },
+
+    { "time": 9.46, "lane": 0, "type": 0 },
+    { "time": 9.64, "lane": 1, "type": 0 },
+    { "time": 9.82, "lane": 0, "type": 0 },
+    
+    { "time": 10.20, "lane": 1, "type": 0 },
+    { "time": 10.38, "lane": 0, "type": 0 },
+    { "time": 10.56, "lane": 1, "type": 0 },
+
+    { "time": 11.00, "lane": 0, "type": 0 },
+    { "time": 11.36, "lane": 1, "type": 0 },
+    { "time": 11.73, "lane": 0, "type": 0 },
+    { "time": 12.10, "lane": 1, "type": 0 },
+
+    { "time": 12.46, "lane": 0, "type": 0 },
+    { "time": 12.82, "lane": 0, "type": 0 },
+    { "time": 13.19, "lane": 1, "type": 0 },
+    { "time": 13.56, "lane": 1, "type": 0 },
+
+    { "time": 13.92, "lane": 0, "type": 0 },
+    { "time": 14.10, "lane": 1, "type": 0 },
+    { "time": 14.28, "lane": 0, "type": 0 },
+    { "time": 14.46, "lane": 1, "type": 0 },
+    { "time": 14.64, "lane": 0, "type": 0 },
+    
+    { "time": 15.00, "lane": 1, "type": 0 },
+    { "time": 15.36, "lane": 0, "type": 0 },
+    { "time": 15.73, "lane": 1, "type": 0 },
+    { "time": 16.10, "lane": 0, "type": 0 }
+  ]
+}
